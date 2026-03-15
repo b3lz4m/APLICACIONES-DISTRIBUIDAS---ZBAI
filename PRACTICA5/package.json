@@ -1,0 +1,15 @@
+{
+  "name": "practica05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "recoverdb.js",
+  "scripts": {
+    "start": "node recoverdb.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ale",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^7.1.0"
+  }
+}
