@@ -1,7 +1,7 @@
 {
   "name": "practica05",
   "version": "1.0.0",
-  "description": "",
+  "description": "Práctica 5",
   "main": "recoverdb.js",
   "scripts": {
     "start": "node recoverdb.js",
