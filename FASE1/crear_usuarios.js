@@ -1,34 +1,30 @@
 const { MongoClient } = require('mongodb');
 const crypto = require('crypto');
 
-// 1. Pega aquí tu cadena de conexión de Atlas
 const uri = "mongodb+srv://alebelzamo_db_user:JLY3ZmmUWEn2G1XY@cluster0.0ix4eqt.mongodb.net/?appName=Cluster0"; 
 
 const client = new MongoClient(uri);
 
-// Función para cifrar la contraseña en SHA256
 function aplicarSHA256(password) {
     return crypto.createHash('sha256').update(password).digest('hex');
 }
 
 async function poblarBaseDeDatos() {
     try {
-        // Conectar al cluster
+        // Cluster
         await client.connect();
         console.log("Conectado correctamente a MongoDB Atlas");
 
-        // Crear/Seleccionar la base de datos y la colección
-        const database = client.db('sistema_2fa'); // Puedes cambiar el nombre
+        const database = client.db('sistema_2fa'); 
         const coleccionUsuarios = database.collection('usuarios');
 
-        // 2. Definir los 5 usuarios según los campos de tu pizarrón
         const usuariosNuevos = [
             {
                 usuario: "alejandra@correo.com",
-                password: aplicarSHA256("mipassword123"), // Se cifra antes de guardar
+                password: aplicarSHA256("mipassword123"), 
                 name: "Alejandra",
-                created: new Date(), // Fecha y hora actual
-                deleted: false // Falso porque están activos
+                created: new Date(), 
+                deleted: false 
             },
             {
                 usuario: "isabel@correo.com",
@@ -60,7 +56,7 @@ async function poblarBaseDeDatos() {
             }
         ];
 
-        // 3. Insertar los usuarios en la base de datos
+  
         const resultado = await coleccionUsuarios.insertMany(usuariosNuevos);
         console.log(`${resultado.insertedCount} usuarios fueron agregados exitosamente.`);
 
