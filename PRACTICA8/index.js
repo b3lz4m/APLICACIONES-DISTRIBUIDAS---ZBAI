@@ -25,7 +25,6 @@ async function connectDB() {
 
 app.get("/", (req, res) => res.json({ message: "Servidor Activo" }));
 
-// Crear un proyecto nuevo (POST)
 app.post("/serv003/:info", async (req, res) => {
     const info = req.params.info; 
     const { nombre, descripcion, presupuesto, responsable } = req.body;
@@ -37,7 +36,7 @@ app.post("/serv003/:info", async (req, res) => {
             descripcion: descripcion,    
             presupuesto: presupuesto,    
             responsable: responsable,    
-            deleted: false // Inicializa estado lógico
+            deleted: false 
         };
 
         const resultado = await collectionProyectos.insertOne(nuevoProyecto);
@@ -52,7 +51,6 @@ app.post("/serv003/:info", async (req, res) => {
     }
 });
 
-// Eliminación lógica (PUT)
 app.put('/proyectos/delete/:id_externo', async (req, res) => {
     const idExterno = req.params.id_externo;
 
