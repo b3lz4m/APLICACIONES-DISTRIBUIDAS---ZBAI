@@ -23,7 +23,6 @@ async function connectDB() {
 
 app.get("/", (req, res) => res.json({ message: "Server is running" }));
 
-// Punto 6: Recibe el arreglo 'recipes' como parámetro en el body
 app.post("/receipt/insert", async (req, res) => {
     const recipes = req.body.recipes; 
     let result = "";
